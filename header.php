@@ -44,29 +44,37 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="navbar navbar-default navbar-static-top main-navigation">
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#primary-navigation" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only"><?php esc_html_e('Toggle navigation'); ?></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
+		<nav class="navbar navbar-expand-md navbar-light bg-light" role="navigation">
+		  	<div class="container">
+		  		<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ) ?>">
+					<img class="headerImage" src="<?php echo get_template_directory_uri(); ?>/logo.png">
+		  		</a>
+			  	<div class="navbar-header">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+		  		</div>
+				<?php
+				wp_nav_menu( array(
+					'theme_location'    => 'primary',
+					'depth'             => 2,
+					'container'         => 'div',
+					'container_class'   => 'collapse navbar-collapse justify-content-end',
+					'container_id'      => 'bs-example-navbar-collapse-1',
+					'menu_class'        => 'nav navbar-nav',
+					'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+					'walker'            => new WP_Bootstrap_Navwalker(),
+				) );
+				?>
 			</div>
-			<?php
-			wp_nav_menu( array(
-				'menu'              => 'primary',
-				'theme_location'    => 'primary',
-				'depth'             => 2,
-				'container'         => 'div',
-				'container_class'   => 'collapse navbar-collapse',
-				'container_id'      => 'primary-navigation',
-				'menu_class'        => 'nav navbar-nav',
-				'fallback_cb'       => 'themestry_default_main_nav',
-				'walker'            => new wp_bootstrap_navwalker()
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+		</nav>
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content container">
+	<?php
+	$container_class = 'container';
+	if ( is_page_template('page-fullwidth.php') ) $container_class = '';
+	?>
+
+	<div id="content" class="site-content <?php echo $container_class; ?>">
+

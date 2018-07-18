@@ -33,7 +33,7 @@ add_action( 'wp_head', 'themestry_pingback_header' );
 
 function themestry_default_main_nav() { ?>
 	<div id="primary-navigation" class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav justify-content-end">
 			<?php wp_list_pages('title_li='); ?>
 		</ul>
 	</div>
