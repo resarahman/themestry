@@ -25,7 +25,6 @@
 	// PUT CUSTOM CODE SCRIPT BELOW
 
 
-
 	// END CUSTOM CODE SCRIPT
 
 	var container, button, menu, links, i, len;
